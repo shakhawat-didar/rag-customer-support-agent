@@ -1,0 +1,18 @@
+flowchart TD
+    subgraph INGEST[Knowledge Base Ingestion - Manual]
+        A[Manual Trigger] --> B[Find Knowledge Base Folder]
+        B --> C[List Knowledge Base Documents]
+        C --> D[Download Documents]
+        D --> E[Document Loader + OpenAI Embeddings]
+        E --> F[Insert into Pinecone]
+    end
+    subgraph EMAIL[Customer Email Handling]
+        G[Gmail Trigger: every minute] --> H[Extract sender and email fields]
+        H --> I[Prepare customer query from snippet]
+        I --> J[Retrieve relevant knowledge from Pinecone]
+        J --> K[Aggregate retrieved context]
+        K --> L{Knowledge found?}
+        L -- Yes --> M[GPT-4o-mini AI Agent]
+        M --> N[Send HTML reply]
+        L -- No --> O[Send fallback reply]
+    end

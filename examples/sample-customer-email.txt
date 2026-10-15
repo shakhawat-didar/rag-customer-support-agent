@@ -1,0 +1,6 @@
+From: Jamie Lee <jamie@example.com>
+Subject: What is your return policy?
+
+Could you tell me how many days I have to return an item?
+
+Note: fictional sample email for testing only.
